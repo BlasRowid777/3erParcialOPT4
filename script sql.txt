@@ -1,0 +1,12 @@
+CREATE TABLE public.persona ( id serial, nombre character varying(255) NOT NULL, apellido character varying(255) NOT NULL, tipo_documento character varying(20) NOT NULL, documento character varying(20) NOT NULL, direccion character varying(100) NOT NULL, telefono character varying(20) NOT NULL, mail character varying(100) NOT NULL, estado boolean, CONSTRAINT pk_id_persona PRIMARY KEY (id) ) CREATE TABLE public.cuenta ( Id serial, id_cuenta integer NOT NULL, nombre_cuenta character varying(50) NOT NULL , numero_cuenta character varying(100) NOT NULL, limite_saldo integer NOT NULL, limite_transferencia integer NOT NULL, id_persona integer NOT NULL, saldo integer NOT NULL, estado integer NOT NULL, CONSTRAINT "Cuenta_pkey" PRIMARY KEY (id), CONSTRAINT fk_id_persona FOREIGN KEY (id_persona) REFERENCES public.persona (id) MATCH SIMPLE ON UPDATE NO ACTION
+ON DELETE NO ACTION )
+
+CREATE TABLE public.historial ( id serial, fecha timestamp with time zone NOT NULL, monto integer NOT NULL, operacion character varying NOT NULL, id_cuenta integer NOT NULL, CONSTRAINT historial_pkey PRIMARY KEY (id), CONSTRAINT fk_id_cuenta FOREIGN KEY (id_cuenta) REFERENCES public.cuenta (id) MATCH SIMPLE ON UPDATE NO ACTION ON DELETE NO ACTION )
+
+CREATE TABLE public.usuario
+(
+id serial,
+nombre_usuario character varying(50) NOT NULL,
+password character varying(100) NOT NULL,
+CONSTRAINT usuario_pkey PRIMARY KEY (id)
+)

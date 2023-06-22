@@ -1,0 +1,1 @@
+ docker run --name 3erParcial_Opt4-Blas- -e POSTGRES_USER=blas -e POSTGRES_PASSWORD=a.123456 -e POSTGRES_DB=BD3erPARCIALOP4 -p 8080:5432 -d postgres
